@@ -47,15 +47,17 @@ const RoomsPage: React.FC = () => {
       // Converter tipos do banco de dados, mantendo IDs originais e adicionando nomes para exibição
       const mappedData = roomsData.map((room: any) => {
         const consumableIds = room.consumables || [];
-        const consumableNames = consumableIds.map((id: string) => 
-          consumablesMap.get(id) || id
+        // Filtrar apenas consumíveis que ainda existem
+        const validConsumableIds = consumableIds.filter((id: string) => consumablesMap.has(id));
+        const consumableNames = validConsumableIds.map((id: string) => 
+          consumablesMap.get(id)
         );
         
         return {
           ...room,
           price: Number(room.price),
           capacity: Number(room.capacity),
-          consumables: consumableIds, // Manter IDs para edição
+          consumables: validConsumableIds, // Manter apenas IDs válidos
           consumablesDisplay: consumableNames, // Nomes para exibição
           createdAt: new Date(room.created_at),
           updatedAt: new Date(room.updated_at)

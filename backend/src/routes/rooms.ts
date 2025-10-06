@@ -83,6 +83,7 @@ router.delete('/:id', async (req, res) => {
   try {
     const { id } = req.params;
     
+    // Excluir o quarto (reservas e logs mantêm o room_id para histórico)
     const result = await pool.query('DELETE FROM rooms WHERE id = $1 RETURNING *', [id]);
     
     if (result.rows.length === 0) {
