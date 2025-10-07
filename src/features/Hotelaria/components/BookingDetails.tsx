@@ -155,7 +155,7 @@ const BookingDetails: React.FC<BookingDetailsProps> = ({ booking, onEdit, onStat
     {
       icon: CreditCard,
       label: 'Valor Total',
-      value: `R$ ${booking.totalAmount.toFixed(2).replace('.', ',')}`,
+      value: `Kz ${booking.totalAmount.toFixed(2).replace('.', ',')}`,
     },
     {
       icon: Users,

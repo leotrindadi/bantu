@@ -86,15 +86,15 @@ const DashboardPage: React.FC = () => {
   const getActivityColor = (status: RecentActivity['status']) => {
     switch (status) {
       case 'confirmed':
-        return 'bg-blue-100 text-blue-600';
+        return 'bg-blue-50 text-blue-700 border border-blue-200';
       case 'checked-in':
-        return 'bg-green-100 text-green-600';
+        return 'bg-green-50 text-green-700 border border-green-200';
       case 'checked-out':
-        return 'bg-yellow-100 text-yellow-600';
+        return 'bg-yellow-50 text-yellow-700 border border-yellow-200';
       case 'completed':
-        return 'bg-purple-100 text-purple-600';
+        return 'bg-purple-50 text-purple-700 border border-purple-200';
       default:
-        return 'bg-gray-100 text-gray-600';
+        return 'bg-gray-50 text-gray-700 border border-gray-200';
     }
   };
 
@@ -248,22 +248,24 @@ const DashboardPage: React.FC = () => {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Gráfico da Métrica Selecionada */}
         <div className="lg:col-span-2">
-          {selectedMetric && chartData.length > 0 ? (
-            <MetricChart
-              data={chartData}
-              period={selectedPeriod}
-              metric={selectedMetric as any}
-              title={metricConfig[selectedMetric as keyof typeof metricConfig]?.title || ''}
-              color={metricConfig[selectedMetric as keyof typeof metricConfig]?.color || '#3b82f6'}
-            />
-          ) : (
-            <div className="bg-white p-6 rounded-lg shadow">
-              <div className="h-64 bg-gray-50 rounded flex flex-col items-center justify-center">
+          <div className="bg-white p-6 rounded-lg shadow h-[400px] flex flex-col">
+            {selectedMetric && chartData.length > 0 ? (
+              <div className="flex-1 min-h-0">
+                <MetricChart
+                  data={chartData}
+                  period={selectedPeriod}
+                  metric={selectedMetric as any}
+                  title={metricConfig[selectedMetric as keyof typeof metricConfig]?.title || ''}
+                  color={metricConfig[selectedMetric as keyof typeof metricConfig]?.color || '#3b82f6'}
+                />
+              </div>
+            ) : (
+              <div className="flex-1 bg-gray-50 rounded flex flex-col items-center justify-center">
                 <p className="text-gray-400 text-lg mb-2">📊 Selecione uma métrica</p>
                 <p className="text-gray-500 text-sm">Clique em um dos cards acima para visualizar o gráfico</p>
               </div>
-            </div>
-          )}
+            )}
+          </div>
         </div>
 
         {/* Últimas Atividades */}
@@ -277,20 +279,20 @@ const DashboardPage: React.FC = () => {
                 <div key={activity.id} className="flex items-start justify-between p-3 hover:bg-gray-50 rounded-lg border-l-4 border-blue-500">
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-1">
-                      <span className={`px-2 py-0.5 text-xs font-medium rounded-full ${
+                      <span className={`px-2 py-0.5 rounded text-xs font-medium ${
                         getActivityColor(activity.status)
                       }`}>
                         {getActivityLabel(activity.status)}
                       </span>
                       <span className="text-xs text-gray-400">
-                        {new Date(activity.updated_at).toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' })}
+                        {new Date(activity.updated_at).toLocaleDateString('pt-AO', { day: '2-digit', month: '2-digit', timeZone: 'Africa/Luanda' })} às {new Date(activity.updated_at).toLocaleTimeString('pt-AO', { hour: '2-digit', minute: '2-digit', timeZone: 'Africa/Luanda' })}
                       </span>
                     </div>
                     <p className="font-medium text-sm">Quarto {activity.room_number}</p>
                     <p className="text-xs text-gray-500">{activity.guest_name}</p>
                     {activity.status === 'confirmed' && (
                       <p className="text-xs text-gray-400 mt-1">
-                        Check-in: {new Date(activity.check_in).toLocaleDateString('pt-BR')}
+                        Check-in: {new Date(activity.check_in).toLocaleDateString('pt-AO', { timeZone: 'Africa/Luanda' })}
                       </p>
                     )}
                   </div>

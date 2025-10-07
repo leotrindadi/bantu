@@ -119,7 +119,7 @@ const BookingList: React.FC<BookingListProps> = ({ bookings, onViewDetails }) =>
             </div>
             <div className="text-right">
               <span className="text-lg font-bold text-gray-900">
-                R$ {Number(booking.totalAmount).toFixed(2)}
+                Kz {Number(booking.totalAmount).toFixed(2).replace('.', ',')}
               </span>
             </div>
           </div>

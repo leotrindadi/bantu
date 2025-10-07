@@ -22,7 +22,7 @@ const GuestForm: React.FC<GuestFormProps> = ({
     email: '',
     phone: '',
     document: '',
-    nationality: 'Brasileiro',
+    nationality: 'Angolano',
     address: '',
   });
 
@@ -71,7 +71,7 @@ const GuestForm: React.FC<GuestFormProps> = ({
           type="text"
           value={formData.name}
           onChange={(e) => handleFormChange('name', e.target.value)}
-          placeholder="Nome completo do hóspede"
+          placeholder="Nome do Hóspede"
           className="w-full"
           required
         />
@@ -88,7 +88,7 @@ const GuestForm: React.FC<GuestFormProps> = ({
             type="email"
             value={formData.email}
             onChange={(e) => handleFormChange('email', e.target.value)}
-            placeholder="email@exemplo.com"
+            placeholder="exemplo@gmail.com"
             className="w-full"
             required
           />
@@ -102,7 +102,7 @@ const GuestForm: React.FC<GuestFormProps> = ({
             type="tel"
             value={formData.phone}
             onChange={(e) => handleFormChange('phone', e.target.value)}
-            placeholder="(00) 00000-0000"
+            placeholder="+244 XXX XXX XXX"
             className="w-full"
             required
           />
@@ -120,7 +120,7 @@ const GuestForm: React.FC<GuestFormProps> = ({
             type="text"
             value={formData.document}
             onChange={(e) => handleFormChange('document', e.target.value)}
-            placeholder="CPF/Passaporte"
+            placeholder="NIF/Passaporte"
             className="w-full"
             required
           />
@@ -137,9 +137,10 @@ const GuestForm: React.FC<GuestFormProps> = ({
               className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent appearance-none"
               required
             >
-              <option value="Brasileiro">Brasileiro</option>
+              <option value="Angolano">Angolano</option>
               <option value="Americano">Americano</option>
               <option value="Argentino">Argentino</option>
+              <option value="Brasileiro">Brasileiro</option>
               <option value="Canadense">Canadense</option>
               <option value="Espanhol">Espanhol</option>
               <option value="Francês">Francês</option>
@@ -163,7 +164,7 @@ const GuestForm: React.FC<GuestFormProps> = ({
           type="text"
           value={formData.address}
           onChange={(e) => handleFormChange('address', e.target.value)}
-          placeholder="Endereço completo (opcional)"
+          placeholder="Opcional"
           className="w-full"
         />
       </div>

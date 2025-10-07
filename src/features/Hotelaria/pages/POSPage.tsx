@@ -28,6 +28,7 @@ interface ReservaForm {
   documento: string;
   telefone: string;
   email: string;
+  nacionalidade: string;
 }
 
 const POSPage: React.FC = () => {
@@ -53,6 +54,7 @@ const POSPage: React.FC = () => {
     documento: '',
     telefone: '',
     email: '',
+    nacionalidade: 'Angolano',
   });
 
   // Carregar quartos e hóspedes da API
@@ -202,6 +204,7 @@ const POSPage: React.FC = () => {
       documento: hospede.document,
       telefone: hospede.phone,
       email: hospede.email,
+      nacionalidade: hospede.nationality || 'Angolano',
     });
     setShowSuggestions(false);
   };
@@ -224,7 +227,7 @@ const POSPage: React.FC = () => {
         document: formData.documento,
         phone: formData.telefone || '',
         email: formData.email || '',
-        nationality: 'Brasil', // valor padrão
+        nationality: formData.nacionalidade || 'Angolano',
       });
 
       // Atualizar lista local de hóspedes
@@ -342,6 +345,7 @@ const POSPage: React.FC = () => {
       documento: '',
       telefone: '',
       email: '',
+      nacionalidade: 'Angolano',
     });
   };
 
@@ -491,7 +495,7 @@ const POSPage: React.FC = () => {
                           {quarto.capacidade} pessoas
                         </div>
                         <div className="text-sm font-semibold text-gray-900">
-                          R$ {Number(quarto.preco).toFixed(2)}/dia
+                          Kz {Number(quarto.preco).toFixed(2).replace('.', ',')}/dia
                         </div>
                         <div className={`text-xs font-medium mt-2 ${
                           quarto.status === 'disponivel' ? 'text-green-700' : 'text-gray-600'
@@ -540,7 +544,7 @@ const POSPage: React.FC = () => {
                   <div className="text-sm text-gray-700 space-y-1">
                     <div>Tipo: <span className="font-medium">{getTipoLabel(selectedQuarto.tipo)}</span></div>
                     <div>Capacidade: <span className="font-medium">{selectedQuarto.capacidade} pessoas</span></div>
-                    <div>Preço: <span className="font-medium">R$ {Number(selectedQuarto.preco).toFixed(2)}/dia</span></div>
+                    <div>Preço: <span className="font-medium">Kz {Number(selectedQuarto.preco).toFixed(2).replace('.', ',')}/dia</span></div>
                   </div>
                 </div>
 
@@ -626,7 +630,7 @@ const POSPage: React.FC = () => {
                         type="text"
                         value={formData.hospede}
                         onChange={(e) => handleFormChange('hospede', e.target.value)}
-                        placeholder="Nome do hóspede"
+                        placeholder="Nome do Hóspede"
                         className="w-full"
                         autoComplete="off"
                       />
@@ -656,7 +660,7 @@ const POSPage: React.FC = () => {
                         type="text"
                         value={formData.documento}
                         onChange={(e) => handleFormChange('documento', e.target.value)}
-                        placeholder="CPF ou RG"
+                        placeholder="NIF/Passaporte"
                         className="w-full"
                       />
                     </div>
@@ -669,7 +673,7 @@ const POSPage: React.FC = () => {
                         type="tel"
                         value={formData.telefone}
                         onChange={(e) => handleFormChange('telefone', e.target.value)}
-                        placeholder="(00) 00000-0000"
+                        placeholder="+244 XXX XXX XXX"
                         className="w-full"
                       />
                     </div>
@@ -682,9 +686,33 @@ const POSPage: React.FC = () => {
                         type="email"
                         value={formData.email}
                         onChange={(e) => handleFormChange('email', e.target.value)}
-                        placeholder="email@exemplo.com"
+                        placeholder="exemplo@gmail.com"
                         className="w-full"
                       />
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                        Nacionalidade *
+                      </label>
+                      <select
+                        value={formData.nacionalidade}
+                        onChange={(e) => handleFormChange('nacionalidade', e.target.value)}
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      >
+                        <option value="Angolano">Angolano</option>
+                        <option value="Americano">Americano</option>
+                        <option value="Argentino">Argentino</option>
+                        <option value="Brasileiro">Brasileiro</option>
+                        <option value="Canadense">Canadense</option>
+                        <option value="Espanhol">Espanhol</option>
+                        <option value="Francês">Francês</option>
+                        <option value="Inglês">Inglês</option>
+                        <option value="Italiano">Italiano</option>
+                        <option value="Alemão">Alemão</option>
+                        <option value="Japonês">Japonês</option>
+                        <option value="Outro">Outro</option>
+                      </select>
                     </div>
                   </div>
                 </div>
@@ -774,7 +802,7 @@ const POSPage: React.FC = () => {
                   <div className="space-y-2 text-sm">
                     <div className="flex justify-between">
                       <span className="text-gray-600">Diária:</span>
-                      <span className="font-medium">R$ {Number(selectedQuarto.preco).toFixed(2)}</span>
+                      <span className="font-medium">Kz {Number(selectedQuarto.preco).toFixed(2).replace('.', ',')}</span>
                     </div>
                     <div className="flex justify-between">
                       <span className="text-gray-600">Quantidade:</span>
@@ -782,7 +810,7 @@ const POSPage: React.FC = () => {
                     </div>
                     <div className="border-t pt-2 flex justify-between text-lg font-bold">
                       <span>Total:</span>
-                      <span className="text-blue-600">R$ {Number(total).toFixed(2)}</span>
+                      <span className="text-blue-600">Kz {Number(total).toFixed(2).replace('.', ',')}</span>
                     </div>
                   </div>
                 </div>

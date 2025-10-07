@@ -183,7 +183,7 @@ router.get('/metrics', async (req, res) => {
       occupied: `${occupied.occupied}/${occupied.total}`,
       checkIns: checkIns.toString(),
       checkOuts: checkOuts.toString(),
-      revenue: `R$ ${revenue.toFixed(2).replace('.', ',')}`,
+      revenue: `Kz ${revenue.toFixed(2).replace('.', ',')}`,
       cleanings: cleanings.toString(),
       changes: {
         occupied: 0, // Não há histórico de ocupação

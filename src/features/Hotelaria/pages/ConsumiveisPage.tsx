@@ -324,7 +324,7 @@ const ConsumiveisPage: React.FC = () => {
                       {consumivel.categoria.replace('-', ' ')}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 font-semibold">
-                      R$ {Number(consumivel.preco).toFixed(2).replace('.', ',')}
+                      Kz {Number(consumivel.preco).toFixed(2).replace('.', ',')}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                       <span className={consumivel.quantidadeEstoque <= 10 ? 'text-red-600 font-semibold' : ''}>

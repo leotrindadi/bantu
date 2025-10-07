@@ -51,13 +51,13 @@ const ReservationCard: React.FC<ReservationCardProps> = ({
 
   const formatDate = (date: Date | string) => {
     if (!date) return '--/--/----';
-    return new Date(date).toLocaleDateString('pt-BR');
+    return new Date(date).toLocaleDateString('pt-AO', { timeZone: 'Africa/Luanda' });
   };
 
   const formatCurrency = (value: number) => {
-    return new Intl.NumberFormat('pt-BR', {
+    return new Intl.NumberFormat('pt-AO', {
       style: 'currency',
-      currency: 'BRL',
+      currency: 'AOA',
     }).format(value);
   };
 

@@ -59,7 +59,7 @@ const HotelariaPage: React.FC = () => {
     },
     {
       id: 'reservas',
-      label: 'Reservas',
+      label: 'Hospedagens',
       icon: Calendar,
       onClick: () => setActiveTab('reservas'),
       isActive: activeTab === 'reservas'

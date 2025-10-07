@@ -54,7 +54,11 @@ const FuncionarioDetails: React.FC<FuncionarioDetailsProps> = ({ funcionario, on
     {
       icon: Briefcase,
       label: 'Função',
-      value: getFuncaoLabel(funcionario.funcao),
+      value: (
+        <span className="px-2 py-1 rounded text-xs bg-blue-50 text-blue-700 border border-blue-200">
+          {getFuncaoLabel(funcionario.funcao)}
+        </span>
+      ),
     },
   ];
 

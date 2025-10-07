@@ -135,7 +135,7 @@ const RoomCard: React.FC<RoomCardProps> = ({ room, onViewDetails, onEdit, onDele
       <div className="flex justify-between items-center">
         <div>
           <span className="text-xl font-bold text-gray-900">
-            R$ {Number(room.price).toFixed(2)}
+            Kz {Number(room.price).toFixed(2).replace('.', ',')}
           </span>
           <span className="text-gray-600 text-sm">/noite</span>
         </div>

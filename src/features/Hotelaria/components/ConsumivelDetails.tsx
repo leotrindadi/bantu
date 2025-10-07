@@ -50,7 +50,7 @@ const ConsumivelDetails: React.FC<ConsumivelDetailsProps> = ({ consumivel, onEdi
     {
       icon: CreditCard,
       label: 'Preço',
-      value: `R$ ${consumivel.preco.toFixed(2).replace('.', ',')}`,
+      value: `Kz ${consumivel.preco.toFixed(2).replace('.', ',')}`,
     },
     {
       icon: Package,

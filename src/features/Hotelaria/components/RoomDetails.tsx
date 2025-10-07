@@ -171,7 +171,7 @@ const RoomDetails: React.FC<RoomDetailsProps> = ({ room, onEdit, onStatusChange 
     {
       icon: CreditCard,
       label: 'Preço por Noite',
-      value: `R$ ${room.price.toFixed(2).replace('.', ',')}`,
+      value: `Kz ${room.price.toFixed(2).replace('.', ',')}`,
     },
     {
       icon: Users,
@@ -371,8 +371,8 @@ const RoomDetails: React.FC<RoomDetailsProps> = ({ room, onEdit, onStatusChange 
                     </p>
                   </div>
                   <div className="text-right text-sm text-gray-500">
-                    <p>{new Date(log.started_at).toLocaleDateString('pt-BR')}</p>
-                    <p>{new Date(log.started_at).toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' })}</p>
+                    <p>{new Date(log.started_at).toLocaleDateString('pt-AO', { timeZone: 'Africa/Luanda' })}</p>
+                    <p>{new Date(log.started_at).toLocaleTimeString('pt-AO', { hour: '2-digit', minute: '2-digit', timeZone: 'Africa/Luanda' })}</p>
                   </div>
                 </div>
                 {log.notes && (
@@ -383,7 +383,7 @@ const RoomDetails: React.FC<RoomDetailsProps> = ({ room, onEdit, onStatusChange 
                 )}
                 {log.completed_at && (
                   <p className="text-xs text-gray-500 mt-1">
-                    Concluída em: {new Date(log.completed_at).toLocaleDateString('pt-BR')} às {new Date(log.completed_at).toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' })}
+                    Concluída em: {new Date(log.completed_at).toLocaleDateString('pt-AO', { timeZone: 'Africa/Luanda' })} às {new Date(log.completed_at).toLocaleTimeString('pt-AO', { hour: '2-digit', minute: '2-digit', timeZone: 'Africa/Luanda' })}
                   </p>
                 )}
               </div>

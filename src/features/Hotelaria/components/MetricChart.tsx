@@ -77,7 +77,7 @@ const MetricChart: React.FC<MetricChartProps> = ({ data, period, metric, title }
         const prevDate = prevDateStr ? new Date(prevDateStr) : null;
         
         if (index === 0 || (prevDate && prevDate.getMonth() !== date.getMonth())) {
-          return `${day} ${date.toLocaleDateString('pt-BR', { month: 'short' }).replace('.', '')}`;
+          return `${day} ${date.toLocaleDateString('pt-AO', { month: 'short', timeZone: 'Africa/Luanda' }).replace('.', '')}`;
         }
         return day.toString();
       }
@@ -85,7 +85,7 @@ const MetricChart: React.FC<MetricChartProps> = ({ data, period, metric, title }
       if (period === 'month') {
         // Mês: primeiro dia com mês, resto só número
         if (index === 0) {
-          return `${day} ${date.toLocaleDateString('pt-BR', { month: 'short' }).replace('.', '')}`;
+          return `${day} ${date.toLocaleDateString('pt-AO', { month: 'short', timeZone: 'Africa/Luanda' }).replace('.', '')}`;
         }
         return day.toString();
       }
@@ -137,7 +137,7 @@ const MetricChart: React.FC<MetricChartProps> = ({ data, period, metric, title }
             
             switch (metric) {
               case 'revenue':
-                return `R$ ${value.toFixed(2).replace('.', ',')}`;
+                return `Kz ${value.toFixed(2).replace('.', ',')}`;
               case 'occupancy':
                 return value === 1 ? '1 Ocupação' : `${value} Ocupações`;
               case 'checkIns':
@@ -168,7 +168,7 @@ const MetricChart: React.FC<MetricChartProps> = ({ data, period, metric, title }
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-md p-6">
+    <div className="h-full flex flex-col">
       <div className="mb-4">
         <h3 className="text-lg font-semibold text-gray-900">{title}</h3>
         <p className="text-sm text-gray-500">
@@ -177,7 +177,7 @@ const MetricChart: React.FC<MetricChartProps> = ({ data, period, metric, title }
           {period === 'month' && 'Este mês'}
         </p>
       </div>
-      <div className="h-64">
+      <div className="flex-1 min-h-0">
         <Line data={chartData} options={options} />
       </div>
     </div>
