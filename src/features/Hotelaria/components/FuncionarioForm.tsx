@@ -35,7 +35,7 @@ const FuncionarioForm: React.FC<FuncionarioFormProps> = ({
     email: '',
     telefone: '',
     documento: '',
-    nacionalidade: 'Brasileiro',
+    nacionalidade: 'Angolano',
     funcao: 'recepcionista',
     endereco: '',
   });
@@ -152,7 +152,7 @@ const FuncionarioForm: React.FC<FuncionarioFormProps> = ({
             type="tel"
             value={formData.telefone}
             onChange={(e) => handleFormChange('telefone', e.target.value)}
-            placeholder="(00) 00000-0000"
+            placeholder="+244 XXX XXX XXX"
             className="w-full"
             required
           />
@@ -170,7 +170,7 @@ const FuncionarioForm: React.FC<FuncionarioFormProps> = ({
             type="text"
             value={formData.documento}
             onChange={(e) => handleFormChange('documento', e.target.value)}
-            placeholder="CPF/Passaporte"
+            placeholder="BI/NIF"
             className="w-full"
             required
           />
@@ -186,17 +186,17 @@ const FuncionarioForm: React.FC<FuncionarioFormProps> = ({
             className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             required
           >
-            <option value="Brasileiro">Brasileiro</option>
-            <option value="Brasileira">Brasileira</option>
+            <option value="Angolano">Angolano</option>
             <option value="Americano">Americano</option>
             <option value="Argentino">Argentino</option>
+            <option value="Brasileiro">Brasileiro</option>
+            <option value="Canadense">Canadense</option>
             <option value="Espanhol">Espanhol</option>
             <option value="Francês">Francês</option>
-            <option value="Francesa">Francesa</option>
             <option value="Inglês">Inglês</option>
             <option value="Italiano">Italiano</option>
-            <option value="Italiana">Italiana</option>
             <option value="Alemão">Alemão</option>
+            <option value="Japonês">Japonês</option>
             <option value="Outro">Outro</option>
           </select>
         </div>

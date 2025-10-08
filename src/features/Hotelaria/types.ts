@@ -38,6 +38,7 @@ export interface Booking {
   guests: number;
   specialRequests?: string;
   paymentMethod?: string;
+  consumablesCost?: number;
   createdAt: Date;
   updatedAt: Date;
   // Relacionamentos

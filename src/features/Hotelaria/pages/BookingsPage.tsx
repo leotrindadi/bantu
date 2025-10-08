@@ -51,6 +51,7 @@ export default function BookingsPage() {
                 guests: Number(b.guests_count),
                 specialRequests: b.special_requests,
                 paymentMethod: b.payment_method,
+                consumablesCost: b.consumables_cost ? Number(b.consumables_cost) : undefined,
                 createdAt: new Date(b.created_at),
                 updatedAt: new Date(b.updated_at),
                 guest: b.guest_name ? {

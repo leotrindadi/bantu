@@ -155,7 +155,7 @@ const ConsumivelForm: React.FC<ConsumivelFormProps> = ({
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">
             <DollarSign className="inline w-4 h-4 mr-1" />
-            Preço (R$) *
+            Preço (Kz) *
           </label>
           <Input
             type="number"

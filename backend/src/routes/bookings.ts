@@ -52,13 +52,13 @@ router.get('/:id', async (req, res) => {
 // POST - Criar nova reserva
 router.post('/', async (req, res) => {
   try {
-    const { guest_id, room_id, check_in, check_out, status, total_amount, guests_count, special_requests, payment_method } = req.body;
+    const { guest_id, room_id, check_in, check_out, status, total_amount, guests_count, special_requests, payment_method, consumables_cost } = req.body;
     
     const result = await pool.query(
-      `INSERT INTO bookings (guest_id, room_id, check_in, check_out, status, total_amount, guests_count, special_requests, payment_method)
-       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+      `INSERT INTO bookings (guest_id, room_id, check_in, check_out, status, total_amount, guests_count, special_requests, payment_method, consumables_cost)
+       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
        RETURNING *`,
-      [guest_id, room_id, check_in, check_out, status || 'confirmed', total_amount, guests_count, special_requests, payment_method]
+      [guest_id, room_id, check_in, check_out, status || 'confirmed', total_amount, guests_count, special_requests, payment_method, consumables_cost || 0]
     );
     
     res.status(201).json(result.rows[0]);
@@ -72,15 +72,15 @@ router.post('/', async (req, res) => {
 router.put('/:id', async (req, res) => {
   try {
     const { id } = req.params;
-    const { guest_id, room_id, check_in, check_out, status, total_amount, guests_count, special_requests, payment_method } = req.body;
+    const { guest_id, room_id, check_in, check_out, status, total_amount, guests_count, special_requests, payment_method, consumables_cost } = req.body;
     
     const result = await pool.query(
       `UPDATE bookings 
        SET guest_id = $1, room_id = $2, check_in = $3, check_out = $4, 
-           status = $5, total_amount = $6, guests_count = $7, special_requests = $8, payment_method = $9
-       WHERE id = $10
+           status = $5, total_amount = $6, guests_count = $7, special_requests = $8, payment_method = $9, consumables_cost = $10
+       WHERE id = $11
        RETURNING *`,
-      [guest_id, room_id, check_in, check_out, status, total_amount, guests_count, special_requests, payment_method, id]
+      [guest_id, room_id, check_in, check_out, status, total_amount, guests_count, special_requests, payment_method, consumables_cost || 0, id]
     );
     
     if (result.rows.length === 0) {

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Guest } from '../types';
 import Button from '@components/ui/Button';
 import Input from '@components/ui/Input';
-import { User, Globe, Mail, Phone, FileText, MapPin } from 'lucide-react';
+import { User, Globe, Mail, Phone, FileText, MapPin, ChevronDown } from 'lucide-react';
 
 interface GuestFormProps {
   initialData?: Guest | null;
@@ -120,7 +120,7 @@ const GuestForm: React.FC<GuestFormProps> = ({
             type="text"
             value={formData.document}
             onChange={(e) => handleFormChange('document', e.target.value)}
-            placeholder="NIF/Passaporte"
+            placeholder="BI/NIF"
             className="w-full"
             required
           />
@@ -134,7 +134,7 @@ const GuestForm: React.FC<GuestFormProps> = ({
             <select
               value={formData.nationality}
               onChange={(e) => handleFormChange('nationality', e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent appearance-none"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent appearance-none pr-10"
               required
             >
               <option value="Angolano">Angolano</option>
@@ -150,6 +150,7 @@ const GuestForm: React.FC<GuestFormProps> = ({
               <option value="Japonês">Japonês</option>
               <option value="Outro">Outro</option>
             </select>
+            <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
           </div>
         </div>
       </div>

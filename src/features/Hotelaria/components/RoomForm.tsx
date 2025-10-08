@@ -250,7 +250,7 @@ const RoomForm: React.FC<RoomFormProps> = ({
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
               <DollarSign className="inline w-4 h-4 mr-1" />
-              Preço/Noite (R$) *
+              Preço/Noite (Kz) *
             </label>
             <Input
               type="number"

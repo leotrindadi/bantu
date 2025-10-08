@@ -660,7 +660,7 @@ const POSPage: React.FC = () => {
                         type="text"
                         value={formData.documento}
                         onChange={(e) => handleFormChange('documento', e.target.value)}
-                        placeholder="NIF/Passaporte"
+                        placeholder="BI/NIF"
                         className="w-full"
                       />
                     </div>
@@ -742,19 +742,6 @@ const POSPage: React.FC = () => {
                       <input
                         type="radio"
                         name="formaPagamento"
-                        value="cartao-credito"
-                        checked={formaPagamento === 'cartao-credito'}
-                        onChange={(e) => setFormaPagamento(e.target.value)}
-                        className="mr-3"
-                      />
-                      <CreditCard className="w-4 h-4 mr-2 text-gray-600" />
-                      <span className="text-sm font-medium">Cartão de Crédito</span>
-                    </label>
-
-                    <label className="flex items-center p-3 border rounded-md cursor-pointer hover:bg-gray-50 transition-colors">
-                      <input
-                        type="radio"
-                        name="formaPagamento"
                         value="cartao-debito"
                         checked={formaPagamento === 'cartao-debito'}
                         onChange={(e) => setFormaPagamento(e.target.value)}
@@ -768,13 +755,13 @@ const POSPage: React.FC = () => {
                       <input
                         type="radio"
                         name="formaPagamento"
-                        value="pix"
-                        checked={formaPagamento === 'pix'}
+                        value="cartao-credito"
+                        checked={formaPagamento === 'cartao-credito'}
                         onChange={(e) => setFormaPagamento(e.target.value)}
                         className="mr-3"
                       />
-                      <DollarSign className="w-4 h-4 mr-2 text-gray-600" />
-                      <span className="text-sm font-medium">PIX</span>
+                      <CreditCard className="w-4 h-4 mr-2 text-gray-600" />
+                      <span className="text-sm font-medium">Cartão de Crédito</span>
                     </label>
 
                     <label className="flex items-center p-3 border rounded-md cursor-pointer hover:bg-gray-50 transition-colors">
